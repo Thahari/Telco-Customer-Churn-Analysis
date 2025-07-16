@@ -4,6 +4,7 @@
 
 This project analyzes customer churn behavior for a telecom company using Power BI. The goal is to uncover insights about why customers leave and how various services, customer demographics, and billing methods influence churn.
 
+
 🧠 Key KPIs
 
 | Metric                    | Value          |
@@ -29,6 +30,7 @@ Male customers → Higher churn in Electronic Check & Mailed Check
 
 Female customers → More churn in Bank Transfers
 
+
 👵 Demographics
 
 Senior Citizens churn less (41.68%) than younger customers (58.32%)
@@ -36,6 +38,7 @@ Senior Citizens churn less (41.68%) than younger customers (58.32%)
 Without Partner & Month-Month Contract → Less likely to churn
 
 With Partner & Long-Term Contracts → More likely to churn
+
 
 💻 Services
 Customers without Tech Support or Online Security tend to churn more
@@ -47,6 +50,7 @@ Streaming TV & Movies show slightly lower churn
 Paperless Billing + Streaming Movies → higher churn
 
 No Internet Service → Least churn (113 people)
+
 
 💡 Cross Insights
 Online Backup + Online Security
@@ -63,6 +67,7 @@ Males: More churn without Tech Support
 
 Females: Surprisingly, more churn even with Tech Support
 
+
 🛠 Tools Used
 
 | Tool         | Purpose                          |
@@ -70,6 +75,7 @@ Females: Surprisingly, more churn even with Tech Support
 | **Power BI** | Dashboarding, DAX KPIs, Data Viz |
 | **Python**   | EDA & pre-analysis               |
 | **SQL**      | Data aggregation & filtering     |
+
 
 📌 Conclusion
 
