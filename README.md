@@ -1,82 +1,110 @@
-# 📊 Telco Customer Churn Analysis – Power BI Dashboard
+# 📊 Telco Customer Churn Analysis – Project Summary
 
-🔍 Project Overview
+📁 Dataset:
+Telco-Customer-Churn
 
-This project analyzes customer churn behavior for a telecom company using Power BI. The goal is to uncover insights about why customers leave and how various services, customer demographics, and billing methods influence churn.
+Contains details such as: customerID, gender, SeniorCitizen, tenure, Contract, PaymentMethod, TotalCharges, Churn, etc.
 
+Total rows: 7043
 
-🧠 Key KPIs
-
-| Metric                    | Value          |
-| ------------------------- | -------------- |
-| 🧮 Total Customers        | 7,043          |
-| 📈 Churn Rate             | 27%            |
-| 💰 Avg. Monthly Charges   | ₹64.76         |
-| 📊 Avg. Tenure            | 32.37 months   |
-| 💸 Revenue Lost (Churned) | ₹2.86 Million  |
-| 🧾 Avg. Services/Customer | \~3–4 services |
-| 👴 Senior Citizens        | 1,142 people   |
+⚙️ Tools Used:
+| Tool         | Purpose                                       |
+| ------------ | --------------------------------------------- |
+| **Python**   | EDA, feature insights, initial visualizations |
+| **SQLite**   | SQL-based metric calculations inside Python   |
+| **Power BI** | KPI tracking, dashboards, slicers/filters     |
 
 
-📌 Insights
-
-🎯 High Churn Patterns
-
-Fibre Optic + Month-to-Month Contracts → Highest churn (2,128 customers)
-
-Electronic Check Payments → ₹1.56M in churned revenue
-
-Male customers → Higher churn in Electronic Check & Mailed Check
-
-Female customers → More churn in Bank Transfers
+📌 Key KPIs (Calculated in Power BI / SQL):
+| KPI                      | Value                                             |
+| ------------------------ | ------------------------------------------------- |
+| 🧑‍🤝‍🧑 Total Customers | 7043                                              |
+| 📉 Churn Rate            | 27%                                               |
+| 💸 Lost Revenue          | ₹2.86 Million                                     |
+| ⏳ Average Tenure         | 32.37 months                                      |
+| 📈 Avg. Monthly Charges  | ₹64.76                                            |
 
 
-👵 Demographics
+🔍 Power BI Insights:
 
-Senior Citizens churn less (41.68%) than younger customers (58.32%)
+🔹 Churn by Demographics
 
-Without Partner & Month-Month Contract → Less likely to churn
+Senior Citizens churn less (41.68%) than younger users.
 
-With Partner & Long-Term Contracts → More likely to churn
+Females have more churn with Bank Transfer, while males churn more with Electronic/Mailed Checks.
+
+🔹 Contract and Services Impact
+
+Month-to-Month with Fibre Optic contract shows highest churn (2128 customers).
+
+Tech Support absent → High churn in males.
+
+StreamingTV & Movies impact churn moderately; no-internet users show least churn.
+
+🔹 Payment Behavior
+
+Electronic Check users churn more (₹1.56M in revenue).
+
+Users with PhoneService + Electronic Check have 2139 churns.
+
+🔹 Partner/Dependent Impact
+
+With Partner + 1/2 year contract = more churn.
+
+No partner + Month-to-Month = lesser churn.
+
+🔹 Combined Insights
+
+OnlineBackup + No OnlineSecurity = 3498 users → potential vulnerability.
+
+Paperless Billing + StreamingMovies + No InternetService shows least churn (113 users).
+
+🧮 SQL (Using SQLite in Python)
+
+Queries executed:
+
+Churn Rate calculation
+
+Total Revenue lost due to churn
+
+Churn by Senior Citizen
+
+Churn distribution by Contract and PaymentMethod
+
+All SQL operations performed using sqlite3 in Python.
 
 
-💻 Services
-Customers without Tech Support or Online Security tend to churn more
+📈 Python Visualizations
 
-PhoneService + Electronic Check users have high churn (2,139)
+Using Seaborn/Matplotlib:
 
-Streaming TV & Movies show slightly lower churn
+Boxplots (TotalCharges vs Churn)
 
-Paperless Billing + Streaming Movies → higher churn
+Countplots (Churn vs Gender, Contract, PaymentMethod)
 
-No Internet Service → Least churn (113 people)
+Correlation heatmap
 
+Pie charts (Service usage & Churn impact)
 
-💡 Cross Insights
-Online Backup + Online Security
+Heatmaps for multivariate relations
 
-No: 3,498 customers
+📌 Dashboard Layout (Power BI)
 
-Yes: 2,019
+KPIs at the Top:
 
-No Internet: 1,526
+Total Customers, Churn Rate, Revenue, Services per Customer
 
-Tech Support + Gender
+Visual Rows:
+Churn by Gender, Senior Citizen, Contract
 
-Males: More churn without Tech Support
+Charges & Tenure Distributions
 
-Females: Surprisingly, more churn even with Tech Support
+Churn by Services (StreamingTV, Movies, Tech Support)
 
+Slicers:
 
-🛠 Tools Used
+Gender, Contract, Services, Churn filter
 
-| Tool         | Purpose                          |
-| ------------ | -------------------------------- |
-| **Power BI** | Dashboarding, DAX KPIs, Data Viz |
-| **Python**   | EDA & pre-analysis               |
-| **SQL**      | Data aggregation & filtering     |
+✅ Conclusion:
 
-
-📌 Conclusion
-
-This project helps business stakeholders identify churn-prone customer segments and suggests potential retention strategies based on billing, contracts, and service usage. Power BI's interactivity enables stakeholders to slice and filter data across key variables like contract type, gender, and internet services.
+This Telco Churn project provides actionable business insights to reduce churn, target at-risk customer groups, and improve customer retention strategies. Insights are validated using Python, SQL, and Power BI dashboards — making this project interview-ready and industry-relevant.
