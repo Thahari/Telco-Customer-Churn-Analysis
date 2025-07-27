@@ -1,110 +1,53 @@
-# 📊 Telco Customer Churn Analysis – Project Summary
+# 📉 Customer Churn Prediction – Telco Dataset
 
-📁 Dataset:
-Telco-Customer-Churn
+This project predicts customer churn for a telecom company using Python (pandas, sklearn, SQL), Power BI, and various machine learning models. The goal is to identify customers likely to churn and understand the key drivers behind their behavior.
 
-Contains details such as: customerID, gender, SeniorCitizen, tenure, Contract, PaymentMethod, TotalCharges, Churn, etc.
+---
 
-Total rows: 7043
+## 📊 Dataset
 
-⚙️ Tools Used:
-| Tool         | Purpose                                       |
-| ------------ | --------------------------------------------- |
-| **Python**   | EDA, feature insights, initial visualizations |
-| **SQLite**   | SQL-based metric calculations inside Python   |
-| **Power BI** | KPI tracking, dashboards, slicers/filters     |
+- **Source**: Telco Customer Churn dataset (CSV)
+- **Size**: 7,043 rows, 21 columns
+- **Target variable**: `Churn` (Yes/No)
 
+---
 
-📌 Key KPIs (Calculated in Power BI / SQL):
-| KPI                      | Value                                             |
-| ------------------------ | ------------------------------------------------- |
-| 🧑‍🤝‍🧑 Total Customers | 7043                                              |
-| 📉 Churn Rate            | 27%                                               |
-| 💸 Lost Revenue          | ₹2.86 Million                                     |
-| ⏳ Average Tenure         | 32.37 months                                      |
-| 📈 Avg. Monthly Charges  | ₹64.76                                            |
+## 🧠 Project Workflow
 
+1. **Data Cleaning & Exploration**
+   - Handled missing values, duplicates
+   - Converted `TotalCharges` to numeric
+   - Explored churn patterns with SQL and Python
 
-🔍 Power BI Insights:
+2. **Feature Engineering**
+   - Encoded categorical variables
+   - Scaled numerical features
+   - Addressed class imbalance with `class_weight` and hyperparameters
 
-🔹 Churn by Demographics
+3. **Model Training & Evaluation**
+   - Trained 7 models: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, AdaBoost, XGBoost, MLP
+   - Applied **hyperparameter tuning** using GridSearchCV / RandomizedSearchCV
+   - Created a **Voting Ensemble**
+   - Final model: **CatBoostClassifier**
 
-Senior Citizens churn less (41.68%) than younger users.
+4. **Performance Metrics (Class 1: Churn)**
 
-Females have more churn with Bank Transfer, while males churn more with Electronic/Mailed Checks.
+| Model            | F1-Score |
+|------------------|----------|
+| ✅ **CatBoost**     | **0.615**  
+| Voting Ensemble  | 0.610  
+| Random Forest    | 0.605  
+| XGBoost          | 0.603  
+| Decision Tree    | 0.597  
 
-🔹 Contract and Services Impact
+5. **Dashboard & Business Insights**
+   - Created interactive Power BI dashboard
+   - Identified churn patterns by contract, tenure, charges
+   - Estimated revenue loss by customer segment
 
-Month-to-Month with Fibre Optic contract shows highest churn (2128 customers).
+---
 
-Tech Support absent → High churn in males.
+## 🚀 Final Model: CatBoost
 
-StreamingTV & Movies impact churn moderately; no-internet users show least churn.
-
-🔹 Payment Behavior
-
-Electronic Check users churn more (₹1.56M in revenue).
-
-Users with PhoneService + Electronic Check have 2139 churns.
-
-🔹 Partner/Dependent Impact
-
-With Partner + 1/2 year contract = more churn.
-
-No partner + Month-to-Month = lesser churn.
-
-🔹 Combined Insights
-
-OnlineBackup + No OnlineSecurity = 3498 users → potential vulnerability.
-
-Paperless Billing + StreamingMovies + No InternetService shows least churn (113 users).
-
-🧮 SQL (Using SQLite in Python)
-
-Queries executed:
-
-Churn Rate calculation
-
-Total Revenue lost due to churn
-
-Churn by Senior Citizen
-
-Churn distribution by Contract and PaymentMethod
-
-All SQL operations performed using sqlite3 in Python.
-
-
-📈 Python Visualizations
-
-Using Seaborn/Matplotlib:
-
-Boxplots (TotalCharges vs Churn)
-
-Countplots (Churn vs Gender, Contract, PaymentMethod)
-
-Correlation heatmap
-
-Pie charts (Service usage & Churn impact)
-
-Heatmaps for multivariate relations
-
-📌 Dashboard Layout (Power BI)
-
-KPIs at the Top:
-
-Total Customers, Churn Rate, Revenue, Services per Customer
-
-Visual Rows:
-Churn by Gender, Senior Citizen, Contract
-
-Charges & Tenure Distributions
-
-Churn by Services (StreamingTV, Movies, Tech Support)
-
-Slicers:
-
-Gender, Contract, Services, Churn filter
-
-✅ Conclusion:
-
-This Telco Churn project provides actionable business insights to reduce churn, target at-risk customer groups, and improve customer retention strategies. Insights are validated using Python, SQL, and Power BI dashboards — making this project interview-ready and industry-relevant.
+```python
+CatBoostClassifier(learning_rate=0.05, iterations=200, depth=5, class_weights=[1,2])
