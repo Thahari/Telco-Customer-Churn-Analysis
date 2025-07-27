@@ -51,3 +51,16 @@ This project predicts customer churn for a telecom company using Python (pandas,
 
 ```python
 CatBoostClassifier(learning_rate=0.05, iterations=200, depth=5, class_weights=[1,2])
+
+---
+
+### 📊 Power BI Dashboard Summary
+
+The Power BI dashboard provides an interactive overview of customer churn patterns in the Telco dataset. It highlights:
+
+- Total and churned customers
+- Churn rates by gender, contract type, senior status, and more
+- Revenue lost due to churn
+- Slicers for segment-level filtering
+
+Business insights such as higher churn among month-to-month contracts, senior citizens, and streaming service users are clearly visualized. This complements the machine learning analysis done in Python.
