@@ -51,6 +51,7 @@ This project predicts customer churn for a telecom company using Python (pandas,
 
 ```python
 CatBoostClassifier(learning_rate=0.05, iterations=200, depth=5, class_weights=[1,2])
+```
 
 ---
 
